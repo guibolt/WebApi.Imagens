@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebApi.Imagens.Service.Inclusao.Services;
+
 
 namespace WebApi.Imagens.Core.Setup
 {
@@ -10,7 +12,9 @@ namespace WebApi.Imagens.Core.Setup
     {
         public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddTransient<IAdicaoService, AdicaoService>();
 
+           
         }
     }
 }

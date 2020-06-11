@@ -6,8 +6,10 @@
 
   <ItemGroup>
     <Folder Include="Inclusao\Command\ValidationCommand\" />
-    <Folder Include="Inclusao\Interfaces\" />
-    <Folder Include="Inclusao\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebApi.Imagens.Domain\WebApi.Imagens.Domain.csproj" />
   </ItemGroup>
 
 </Project>
