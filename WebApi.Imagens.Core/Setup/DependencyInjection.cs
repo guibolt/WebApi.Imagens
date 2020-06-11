@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebApi.Imagens.Data.Interfaces;
+using WebApi.Imagens.Data.Repository;
 using WebApi.Imagens.Service.Inclusao.Services;
 
 
@@ -14,7 +16,7 @@ namespace WebApi.Imagens.Core.Setup
         {
             services.AddTransient<IAdicaoService, AdicaoService>();
 
-           
+            services.AddTransient<IDocument, DocumentRepository>();
         }
     }
 }
