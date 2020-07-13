@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebApi.Imagens.Core\WebApi.Imagens.Core.csproj" />
+    <ProjectReference Include="..\WebApi.Imagens.Service\WebApi.Imagens.Service.csproj" />
   </ItemGroup>
 
 

@@ -12,8 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebApi.Imagens.Data\WebApi.Imagens.Data.csproj" />
-    <ProjectReference Include="..\WebApi.Imagens.Domain\WebApi.Imagens.Domain.csproj" />
-    <ProjectReference Include="..\WebApi.Imagens.Service\WebApi.Imagens.Service.csproj" />
   </ItemGroup>
 
 </Project>

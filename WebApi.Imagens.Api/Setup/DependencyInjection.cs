@@ -6,7 +6,7 @@ using System.Text;
 using WebApi.Imagens.Service.Inclusao.Services;
 
 
-namespace WebApi.Imagens.Core.Setup
+namespace WebApi.Imagens.Api.Setup
 {
     public static class DependencyInjection
     {
@@ -14,7 +14,7 @@ namespace WebApi.Imagens.Core.Setup
         {
             services.AddTransient<IAdicaoService, AdicaoService>();
 
-           
+
         }
     }
 }

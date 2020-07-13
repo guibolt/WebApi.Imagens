@@ -9,8 +9,4 @@
     <Folder Include="Repository\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\WebApi.Imagens.Domain\WebApi.Imagens.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

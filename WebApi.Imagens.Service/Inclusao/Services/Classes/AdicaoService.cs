@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WebApi.Imagens.Core.Command;
+﻿using WebApi.Imagens.Core.Command;
 
 namespace WebApi.Imagens.Service.Inclusao.Services
 {

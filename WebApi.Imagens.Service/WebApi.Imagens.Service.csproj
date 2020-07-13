@@ -5,11 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Inclusao\Command\ValidationCommand\" />
+    <Folder Include="Consulta\Commands\ValidationCommands\" />
+    <Folder Include="Consulta\Interfaces\" />
+    <Folder Include="Consulta\Services\Classes\" />
+    <Folder Include="Consulta\Services\Interfaces\" />
+    <Folder Include="DelecaoLogica\Commands\ValidationCommands\" />
+    <Folder Include="DelecaoLogica\Interfaces\" />
+    <Folder Include="DelecaoLogica\Services\" />
+    <Folder Include="Inclusao\Commands\ValidationCommands\" />
+    <Folder Include="Inclusao\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebApi.Imagens.Domain\WebApi.Imagens.Domain.csproj" />
+    <ProjectReference Include="..\WebApi.Imagens.Core\WebApi.Imagens.Core.csproj" />
   </ItemGroup>
 
 </Project>
