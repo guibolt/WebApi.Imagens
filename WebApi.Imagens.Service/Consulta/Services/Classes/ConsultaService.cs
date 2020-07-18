@@ -18,6 +18,7 @@ namespace WebApi.Imagens.Service.Consulta.Services.Classes
                 return new CommandReturn(false, command.Erros(), "");
 
             var lstImagens = _documentRepository.BuscarLista<ImagemModel>(command.TipoRecurso);
+            lstImagens.ForEach(c => c.Data64 = string.Format("{0}, {1}", "data:image/png;base64", c.Data64));
 
             return lstImagens is null ? new CommandReturn(false, "Erro ao buscar lista") : new CommandReturn(true, "Consulta realizada com sucesso!", lstImagens);
         }
@@ -29,7 +30,12 @@ namespace WebApi.Imagens.Service.Consulta.Services.Classes
 
             var imagemBuscada = _documentRepository.Buscar<ImagemModel>(c => c.ImageId == command.IdImagem, command.TipoRecurso);
 
-            return imagemBuscada is null ? new CommandReturn(false, "Erro ao buscar imagem, ela não deve existir.") : new CommandReturn(true, "Consulta realizada com sucesso!", imagemBuscada);
+            if (imagemBuscada is null)
+                return new CommandReturn(false, "Erro ao buscar imagem, ela não deve existir.");
+
+            imagemBuscada.Data64 = string.Format("{0}, {1}", "data:image/png;base64", imagemBuscada.Data64);
+
+            return  new CommandReturn(true, "Consulta realizada com sucesso!", imagemBuscada);
         }
     }
 }

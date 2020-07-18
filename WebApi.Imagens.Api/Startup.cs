@@ -31,7 +31,7 @@ namespace WebApi.Imagens.Api
                     Contact = new OpenApiContact
                     {
                         Name = "Guilherme dos Reis",
-                        Url = new Uri("http://www.mfrinfo.com.br")
+                        Url = new Uri("https://guibolt.github.io/")
                     },
                 });
                   
