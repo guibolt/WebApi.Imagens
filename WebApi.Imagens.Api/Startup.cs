@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System;
 using WebApi.Imagens.Api.Setup;
 
 namespace WebApi.Imagens.Api
@@ -19,6 +21,22 @@ namespace WebApi.Imagens.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(c => {
+
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "WebApi Imagens",
+                    Version = "v1",
+                    Description = "Api para guardar e buscar imagens de diferentes tipos de recurso",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Guilherme dos Reis",
+                        Url = new Uri("http://www.mfrinfo.com.br")
+                    },
+                });
+                  
+            });
+
             services.AddControllers();
 
             services.RegisterServices(Configuration);
@@ -37,6 +55,13 @@ namespace WebApi.Imagens.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiImagens");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseEndpoints(endpoints =>
             {

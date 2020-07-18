@@ -63,7 +63,9 @@ namespace WebApi.Imagens.Data.Repository
             {
                 var collection = _bancoDeDados.GetCollection<T>(collectionName);
 
-                return collection.FindAll().ToList();
+                var list = collection.FindAll().ToList();
+
+                return list;
             }
             catch (Exception ex)
             {
@@ -78,7 +80,7 @@ namespace WebApi.Imagens.Data.Repository
             {
                 var collection = _bancoDeDados.GetCollection<T>(collectionName);
 
-                collection.Delete(id);
+                var deletou = collection.Delete(id);
 
                 return true;
             }
@@ -95,7 +97,7 @@ namespace WebApi.Imagens.Data.Repository
             {
                 var collection = _bancoDeDados.GetCollection<T>(collectionName);
 
-                collection.Insert(entity);
+              collection.Insert(entity);
 
                 return true;
 
