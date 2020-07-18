@@ -13,7 +13,6 @@
     <Folder Include="DelecaoLogica\Interfaces\" />
     <Folder Include="DelecaoLogica\Services\" />
     <Folder Include="Inclusao\Commands\ValidationCommands\" />
-    <Folder Include="Inclusao\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>

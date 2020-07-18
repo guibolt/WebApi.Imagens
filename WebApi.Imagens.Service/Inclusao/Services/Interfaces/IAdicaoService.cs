@@ -4,6 +4,6 @@ namespace WebApi.Imagens.Service.Inclusao.Services
 {
     public interface IAdicaoService
     {
-         CommandReturn Retorna();
+         CommandReturn AdicionaImagem();
     }
 }
