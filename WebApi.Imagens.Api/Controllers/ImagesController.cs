@@ -1,8 +1,10 @@
-﻿using LiteDB;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using WebApi.Imagens.Api.Model;
 using WebApi.Imagens.Data.Context;
+using WebApi.Imagens.Service.Inclusao.Commands;
 using WebApi.Imagens.Service.Inclusao.Services;
+using static WebApi.Imagens.Api.Helpers.ImageHelper;
 
 namespace WebApi.Imagens.Api.Controllers
 {
@@ -11,28 +13,19 @@ namespace WebApi.Imagens.Api.Controllers
     public class ImagesController : ControllerBase
     {
         private readonly IAdicaoService _adicaoService;
-        private ILiteDbContext _liteDbContext;
-     
-
         public ImagesController(IAdicaoService adicaoService, ILiteDbContext liteDbContext)
         {
             _adicaoService = adicaoService;
-            _liteDbContext = liteDbContext;
+
         }
 
         //[Route("busca")]
         [HttpGet]
         public IActionResult Retornando()
-
-            
         {
             try
             {
-
-              var retorno =   _adicaoService.AdicionaImagem();
-
-
-                return Ok(retorno  );
+                return Ok("Eae" );
             }
             catch (Exception ex)
             {
@@ -41,6 +34,31 @@ namespace WebApi.Imagens.Api.Controllers
             }
            
         }
+
+        [Route("insere")]
+        [HttpPost]
+        public IActionResult EnviaImagem( [FromForm] InclusaoImagemInputModel imagemInputModel)
+        {
+            try
+            {
+                var imagemBase64 = "";
+
+                if (imagemInputModel.Arquivo != null)
+                    imagemBase64 = RetornaBase64(imagemInputModel.Arquivo);
+
+                var comando = new AdicionaImagemCommand(imagemInputModel.TipoRecurso, imagemBase64, imagemInputModel.Arquivo.FileName);
+
+                var retorno = _adicaoService.AdicionaImagem(comando);
+
+                return retorno.Sucesso ? Ok(retorno) : (ActionResult)BadRequest(comando);
+            }
+            catch (Exception ex )
+            {
+
+               return  BadRequest(ex.Message);
+            }
+        }
+
     }
 
 }

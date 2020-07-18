@@ -9,10 +9,9 @@
     <Folder Include="Consulta\Interfaces\" />
     <Folder Include="Consulta\Services\Classes\" />
     <Folder Include="Consulta\Services\Interfaces\" />
-    <Folder Include="DelecaoLogica\Commands\ValidationCommands\" />
-    <Folder Include="DelecaoLogica\Interfaces\" />
-    <Folder Include="DelecaoLogica\Services\" />
-    <Folder Include="Inclusao\Commands\ValidationCommands\" />
+    <Folder Include="Delecao\Commands\ValidationCommands\" />
+    <Folder Include="Delecao\Interfaces\" />
+    <Folder Include="Delecao\Services\" />
   </ItemGroup>
 
   <ItemGroup>
