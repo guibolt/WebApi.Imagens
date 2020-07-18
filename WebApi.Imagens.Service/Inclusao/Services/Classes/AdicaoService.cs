@@ -16,14 +16,16 @@ namespace WebApi.Imagens.Service.Inclusao.Services
             if (!comando.EhValido())
                 return new CommandReturn(false, comando.Erros(), "");
 
+            var imagemExiste = _documentRepository.Buscar<ImagemModel>(c => c.ImageId == comando.Id,comando.TipoRecurso);
+
+            if(imagemExiste != null)
+                return new CommandReturn(false, "Erro ao inserir imagem, ela ja esta cadastrada");
 
             var novaImagem = comando.RetornaImagem();
 
             var imagemIncluida = _documentRepository.Insere(novaImagem, comando.TipoRecurso);
 
-            var votla = _documentRepository.BuscarLista<ImagemModel>("Imagens");
-
-            return imagemIncluida ? new CommandReturn(true, "Imagem inserida com sucesso!", votla) : new CommandReturn(false, "Erro ao inserir imagem");
+            return imagemIncluida ? new CommandReturn(true, "Imagem inserida com sucesso!") : new CommandReturn(false, "Erro ao inserir imagem");
         }
       
     }

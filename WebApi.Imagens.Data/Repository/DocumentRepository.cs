@@ -1,7 +1,9 @@
 ﻿using LiteDB;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using WebApi.Imagens.Data.Context;
 using WebApi.Imagens.Data.Interfaces;
@@ -32,26 +34,25 @@ namespace WebApi.Imagens.Data.Repository
             }
             catch (Exception ex)
             {
-
+                Debug.Write(ex);
                 return false;
             }
 
         }
 
-        public T Buscar<T>(Guid id, string collectionName) where T : new()
+        public T Buscar<T>(Expression<Func<T, bool>> predicate, string collectionName) where T : new()
         {
             try
             {
                 var collection = _bancoDeDados.GetCollection<T>(collectionName);
 
-                var resultadoBusca = collection.FindById(id);
-
+                var resultadoBusca = collection.Find(predicate).FirstOrDefault();
                 return resultadoBusca;
 
             }
             catch (Exception ex)
             {
-
+                Debug.Write(ex);
                 return new T();
             }
         }
@@ -66,8 +67,8 @@ namespace WebApi.Imagens.Data.Repository
             }
             catch (Exception ex)
             {
-
-                return new List<T>();
+                Debug.Write(ex);
+                return null;
             }
         }
 
@@ -83,7 +84,7 @@ namespace WebApi.Imagens.Data.Repository
             }
             catch (Exception ex)
             {
-
+                Debug.Write(ex);
                 return false;
             }
         }
@@ -101,7 +102,7 @@ namespace WebApi.Imagens.Data.Repository
             }
             catch (Exception ex)
             {
-
+                Debug.Write(ex);
                 return false;
             }
         }

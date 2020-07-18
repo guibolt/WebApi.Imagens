@@ -1,6 +1,7 @@
 ﻿using System;
 using WebApi.Imagens.Core.Models;
 using WebApi.Imagens.Service.Inclusao.Commands;
+using static WebApi.Imagens.Core.Helpers.ImageHelper;
 
 namespace WebApi.Imagens.Service.Inclusao.Mapper
 {
@@ -10,10 +11,10 @@ namespace WebApi.Imagens.Service.Inclusao.Mapper
             new ImagemModel
             {
                 DataInclusao = DateTime.Now,
-                NomeArquivo = command.NomeArquivo,
-                Data64 = command.BaseArquivo64
+                NomeArquivo = command.Arquivo.FileName,
+                Data64 = RetornaBase64( command.Arquivo),
+                ImageId = command.Id
             };
        
-
     }
 }

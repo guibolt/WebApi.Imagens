@@ -5,13 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Consulta\Commands\ValidationCommands\" />
-    <Folder Include="Consulta\Interfaces\" />
-    <Folder Include="Consulta\Services\Classes\" />
-    <Folder Include="Consulta\Services\Interfaces\" />
-    <Folder Include="Delecao\Commands\ValidationCommands\" />
-    <Folder Include="Delecao\Interfaces\" />
-    <Folder Include="Delecao\Services\" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.6" />
   </ItemGroup>
 
   <ItemGroup>

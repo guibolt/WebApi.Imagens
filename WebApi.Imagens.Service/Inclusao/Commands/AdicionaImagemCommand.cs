@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using System;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Text;
 using WebApi.Imagens.Core.Command;
@@ -10,14 +11,14 @@ namespace WebApi.Imagens.Service.Inclusao.Commands
     public class AdicionaImagemCommand : CommandBase
     {
         public string TipoRecurso { get; private set; }
-        public string BaseArquivo64 { get; private set; }
-        public string NomeArquivo { get; private set; }
+        public string Id { get; private set; }
+        public IFormFile Arquivo { get; private set; }
 
-        public AdicionaImagemCommand(string tipoRecurso, string baseArquivo64, string nomeArquivo)
+        public AdicionaImagemCommand(string tipoRecurso, string id, IFormFile arquivo)
         {
             TipoRecurso = tipoRecurso;
-            BaseArquivo64 = baseArquivo64;
-            NomeArquivo = nomeArquivo;
+            Id = id;
+            Arquivo = arquivo;
         }
 
         public override bool EhValido()

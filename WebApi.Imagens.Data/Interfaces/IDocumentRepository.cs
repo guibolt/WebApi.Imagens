@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace WebApi.Imagens.Data.Interfaces
 {
@@ -15,7 +14,7 @@ namespace WebApi.Imagens.Data.Interfaces
 
         bool Atualizar<T>(T entity, string collectionName) where T : new();
 
-        T Buscar<T> (Guid id, string colletionName) where T : new();
+        T Buscar<T>(Expression<Func<T, bool>> predicate, string collectionName) where T : new();
 
     }
 }

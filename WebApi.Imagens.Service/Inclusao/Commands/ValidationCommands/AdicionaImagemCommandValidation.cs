@@ -7,15 +7,14 @@ namespace WebApi.Imagens.Service.Inclusao.Commands.ValidationCommands
     {
         public AdicionaImagemCommandValidation()
         {
-            RuleFor(c => c.BaseArquivo64)
-                .NotEmpty()
+            RuleFor(c => c.Arquivo)
                 .NotNull()
                 .WithMessage("Arquivo inválido");
 
-            RuleFor(c => c.NomeArquivo)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("Nome do arquivo inválido");
+            RuleFor(c => c.Id)
+                 .NotEmpty().
+                NotNull().
+                WithMessage("Id do arquivo inválido");
 
             RuleFor(c => c.TipoRecurso)
                 .NotEmpty().
