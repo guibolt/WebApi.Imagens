@@ -16,7 +16,7 @@ namespace WebApi.Imagens.Service.Inclusao.Mapper
             {
                 DataInclusao = DateTime.Now,
                 NomeArquivo = command.Arquivo.FileName,
-                Data64 =  ResizeBase64ImageString(command.Arquivo.ContentType,base64img,0),
+                Data64 =   base64img,
                 ImageId = command.Id
             };
         }

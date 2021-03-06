@@ -11,6 +11,9 @@ namespace WebApi.Imagens.Api
 {
     public class Startup
     {
+
+        private readonly string _enableCors = "MyCors";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -37,6 +40,16 @@ namespace WebApi.Imagens.Api
                   
             });
 
+            services.AddCors(opt =>
+           {
+               opt.AddPolicy(_enableCors, builder =>
+               {
+                   builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().Build();
+               }
+               );
+           });
+           
+
             services.AddControllers();
 
             services.RegisterServices(Configuration);
@@ -62,6 +75,8 @@ namespace WebApi.Imagens.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiImagens");
                 c.RoutePrefix = string.Empty;
             });
+
+            app.UseCors(_enableCors);
 
             app.UseEndpoints(endpoints =>
             {
